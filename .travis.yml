@@ -1,0 +1,8 @@
+language: generic 
+services:
+    - docker
+before_install:
+    - docker build -t ccollot/terraformfib --build-arg AWS_KEY_ID_FIB="$AWS_KEY_ID_FIB"  --build-arg AWS_SECRET_KEY_FIB="$AWS_SECRET_KEY_FIB"  -f ./Dockerfile .
+
+script:
+    - docker run -it ccollot/terraformfib apply -auto-approve

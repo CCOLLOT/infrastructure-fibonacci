@@ -1,0 +1,7 @@
+variable "BEANSTALK_VPC_CIDR_BLOCK" {
+    
+}
+
+variable "BEANSTALK_SUBNET_CIDR_BLOCK" {
+
+}
