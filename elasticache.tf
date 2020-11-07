@@ -1,5 +1,5 @@
 resource "aws_elasticache_cluster" "redis" {
-  cluster_id           = "multi-docker-fib-redis"
+  cluster_id           = "fibrediscache"
   engine               = "redis"
   node_type            = "cache.t2.micro"
   num_cache_nodes      = 1

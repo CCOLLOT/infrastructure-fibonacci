@@ -31,6 +31,41 @@ resource "aws_elastic_beanstalk_environment" "multi_container_bt_environment" {
     name      = "Subnets"
     value     = aws_subnet.multi_container_app_subnet.id
   }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "PGPASSWORD"
+    value     = var.POSTGRES_PASSWORD
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "PGUSER"
+    value     = var.POSTGRES_USERNAME
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "PGDATABASE"
+    value     = aws_db_instance.postgres_instance.name
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "PGPORT"
+    value     = "5432"
+  }
+   setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "PGHOST"
+    value     = aws_db_instance.postgres_instance.endpoint
+  }
+setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "REDIS_HOST"
+    value     = aws_elasticache_cluster.redis.cluster_id
+  }
+setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "REDIS_PORT"
+    value     = "6379"
+  }
 
   tags = {
     Project = "fib"
