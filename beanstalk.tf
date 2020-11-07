@@ -51,10 +51,10 @@ resource "aws_elastic_beanstalk_environment" "multi_container_bt_environment" {
     name      = "PGPORT"
     value     = "5432"
   }
-   setting {
+  setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "PGHOST"
-    value     = aws_db_instance.postgres_instance.endpoint
+    value     = aws_db_instance.postgres_instance.address
   }
 setting {
     namespace = "aws:elasticbeanstalk:application:environment"
