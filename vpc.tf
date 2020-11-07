@@ -19,6 +19,16 @@ resource "aws_subnet" "multi_container_app_subnet" {
     Name = "fib-subnet"
   }
 }
+resource "aws_subnet" "multi_container_app_subnet" {
+  vpc_id     = aws_vpc.multi_container_app_vpc.id
+  cidr_block = var.BEANSTALK_SUBNET_CIDR_BLOCK2
+  map_public_ip_on_launch = true
+
+  tags = {
+    Project = "fib"
+    Name = "fib-subnet2"
+  }
+}
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.multi_container_app_vpc.id
   tags = {

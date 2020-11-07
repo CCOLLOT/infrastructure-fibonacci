@@ -16,7 +16,7 @@ resource "aws_db_instance" "postgres_instance" {
 
 resource "aws_db_subnet_group" "postres_subnet" {
   name       = "postres_subnet_group"
-  subnet_ids = [aws_subnet.multi_container_app_subnet.id]
+  subnet_ids = [aws_subnet.multi_container_app_subnet.id,aws_subnet.multi_container_app_subnet2.id]
 
   tags = {
     Project = "fib"
