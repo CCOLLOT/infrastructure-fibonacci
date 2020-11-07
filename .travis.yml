@@ -5,4 +5,7 @@ before_install:
     - docker build -t ccollot/terraformfib --build-arg AWS_KEY_ID_FIB="$AWS_KEY_ID_FIB"  --build-arg AWS_SECRET_KEY_FIB="$AWS_SECRET_KEY_FIB"  -f ./Dockerfile .
 
 script:
+    - docker run -it -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e POSTGRES_USERNAME -e POSTGRES_PASSWORD ccollot/terraformfib plan
+
+after_success:
     - docker run -it ccollot/terraformfib apply -auto-approve

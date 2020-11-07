@@ -12,6 +12,11 @@ resource "aws_elastic_beanstalk_environment" "multi_container_bt_environment" {
   solution_stack_name = "64bit Amazon Linux 2018.03 v2.22.1 running Multi-container Docker 19.03.6-ce (Generic)"
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
+    name      = "SecurityGroups"
+    value     = aws_security_group.fib_sg.id
+  }
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
     value     = "fib-instance-profile"
   }
@@ -26,6 +31,7 @@ resource "aws_elastic_beanstalk_environment" "multi_container_bt_environment" {
     name      = "Subnets"
     value     = aws_subnet.multi_container_app_subnet.id
   }
+
   tags = {
     Project = "fib"
   }
