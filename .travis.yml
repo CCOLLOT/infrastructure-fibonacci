@@ -7,5 +7,5 @@ before_install:
 script:
     - docker run -it --entrypoint '/bin/sh' -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e TF_VAR_POSTGRES_USERNAME -e TF_VAR_POSTGRES_PASSWORD ccollot/terraformfib build.sh
 
-after_success:
+after_script:
     - docker run -it ccollot/terraformfib apply -auto-approve
