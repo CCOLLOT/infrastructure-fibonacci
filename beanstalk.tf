@@ -59,7 +59,7 @@ resource "aws_elastic_beanstalk_environment" "multi_container_bt_environment" {
 setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "REDIS_HOST"
-    value     = aws_elasticache_cluster.redis.cluster_id
+    value     = aws_elasticache_cluster.redis.cache_nodes.0.address
   }
 setting {
     namespace = "aws:elasticbeanstalk:application:environment"
