@@ -13,10 +13,22 @@ resource "aws_subnet" "multi_container_app_subnet" {
   vpc_id     = aws_vpc.multi_container_app_vpc.id
   cidr_block = var.BEANSTALK_SUBNET_CIDR_BLOCK
   map_public_ip_on_launch = true
+   availability_zone = "eu-west-1a"
 
   tags = {
     Project = "fib"
     Name = "fib-subnet"
+  }
+}
+resource "aws_subnet" "multi_container_app_subnet2" {
+  vpc_id     = aws_vpc.multi_container_app_vpc.id
+  cidr_block = var.BEANSTALK_SUBNET_CIDR_BLOCK2
+  map_public_ip_on_launch = true
+  availability_zone = "eu-west-1b"
+
+  tags = {
+    Project = "fib"
+    Name = "fib-subnet2"
   }
 }
 resource "aws_internet_gateway" "gw" {

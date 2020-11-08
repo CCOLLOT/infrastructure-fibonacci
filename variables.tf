@@ -6,6 +6,10 @@ variable "BEANSTALK_SUBNET_CIDR_BLOCK" {
 
 }
 
+variable "BEANSTALK_SUBNET_CIDR_BLOCK2" {
+
+}
+
 variable "POSTGRES_PASSWORD" {
 
 }
