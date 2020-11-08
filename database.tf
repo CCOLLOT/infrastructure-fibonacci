@@ -12,6 +12,7 @@ resource "aws_db_instance" "postgres_instance" {
   backup_retention_period = 0
   vpc_security_group_ids = [aws_security_group.fib_sg.id]
   db_subnet_group_name = aws_db_subnet_group.postres_subnet.name
+  skip_final_snapshot = true
 }
 
 resource "aws_db_subnet_group" "postres_subnet" {
